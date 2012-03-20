@@ -1,8 +1,9 @@
-class WelcomeController < ApplicationController
+class CategoryController < ApplicationController
   def index
+    
   end
   
-  def category_tree
+  def tree
     render :json => Category.roots.map{|r| r.to_jstree }
   end
 end

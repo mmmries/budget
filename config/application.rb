@@ -66,5 +66,8 @@ module Budget
       g.view_specs false
       g.helper_specs false
     end
+    
+    #only required if using inheritanc
+    config.mongoid.preload_models = false
   end
 end

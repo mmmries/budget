@@ -1,5 +1,6 @@
 Budget::Application.routes.draw do
-  get "welcome/index"
+  get "category/index"
+  get "category/tree"
 
   devise_for :users
 
@@ -52,7 +53,7 @@ Budget::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'welcome#index'
+  root :to => 'category#index'
 
   # See how all your routes lay out with "rake routes"
 
