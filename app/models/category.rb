@@ -6,6 +6,8 @@ class Category
   field :name, :type => String
   index :name, :unique => true
   
+  before_destroy :destroy_children
+  
   def to_jstree
     {
       :data => name,

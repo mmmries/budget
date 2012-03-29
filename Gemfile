@@ -29,8 +29,7 @@ gem 'devise'
 group :test do
   gem 'rspec-rails'
   gem 'database_cleaner'
-  gem 'factory_girl_rails'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', :require => false
   gem 'capybara'
   gem 'mongoid-rspec'
 end
