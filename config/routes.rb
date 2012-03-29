@@ -1,8 +1,10 @@
 Budget::Application.routes.draw do
   get "category/index"
   get "category/tree"
+  post "category/reorder"
 
-  devise_for :users
+  #Currently we are planning on deploying without users so we can skip this
+  #devise_for :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

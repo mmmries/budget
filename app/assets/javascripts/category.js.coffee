@@ -16,4 +16,12 @@ jQuery ->
   .bind('move_node.jstree', move)
 
 move = (ev, data) ->
-  console.log(ev, data);
+  data.rslt.o.each (i) ->
+    id = $(this).attr('id')
+    position = data.rslt.cp
+    parent = if data.rslt.cr == -1 then "" else data.rslt.np.attr('id') 
+    console.log("reorder id#{id} position#{position} parent#{parent}")
+    $.post('/category/reorder', {id: id, position:position, parent:parent}, (data)->
+      if data == false
+        $.jstree.rollback(data.rlbk)
+    )

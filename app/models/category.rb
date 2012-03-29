@@ -15,4 +15,16 @@ class Category
       :children => children.map{|c| c.to_jstree }
     }
   end
+  
+  def move_to(pos, parent)
+    siblings = Category.roots if parent.nil?
+    siblings ||= parent.children
+    targets = siblings.select do |s| s.position == pos end
+    if targets.size > 0 then
+      move_above(targets.first)
+    else
+      self.parent = parent
+      self.position = pos
+    end
+  end
 end

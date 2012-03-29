@@ -37,9 +37,10 @@ describe Category do
   
   it "should allow resorting" do
     r1.save
-    children = r1.children
-    children.last.move_to_top
+    child = r1.children.last
+    child.move_to(0, child.parent)
     r1.save
+    
     r1 = Category.roots.first
     r1.children.first.name.should == "c2"
     r1.children.last.name.should == "c1"
