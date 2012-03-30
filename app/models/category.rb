@@ -17,14 +17,15 @@ class Category
   end
   
   def move_to(pos, parent)
+    pos = pos.to_i
+    self.parent = parent
     siblings = Category.roots if parent.nil?
     siblings ||= parent.children
-    targets = siblings.select do |s| s.position == pos end
-    if targets.size > 0 then
-      move_above(targets.first)
-    else
-      self.parent = parent
-      self.position = pos
+    siblings = siblings.select{ |s| s.id != self.id }
+    siblings.insert(pos, self)
+    siblings.each_with_index do |s, idx|
+      s.position = idx
+      s.save
     end
   end
 end
