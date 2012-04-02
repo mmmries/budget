@@ -27,6 +27,8 @@ gem 'bson_ext'
 gem 'devise'
 
 group :test do
+  gem 'pry', :require => false
+  gem 'guard-rspec'
   gem 'rspec-rails'
   gem 'database_cleaner'
   gem 'cucumber-rails', :require => false

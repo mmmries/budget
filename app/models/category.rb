@@ -1,3 +1,4 @@
+require 'pry'
 class Category
   include Mongoid::Document
   include Mongoid::Tree
@@ -24,6 +25,7 @@ class Category
     siblings = siblings.select{ |s| s.id != self.id }
     siblings.insert(pos, self)
     siblings.each_with_index do |s, idx|
+      puts "#{s.name}.position = #{idx}"
       s.position = idx
       s.save
     end

@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'pry'
 
 describe Category do
   #The category structure should be:
@@ -6,11 +7,11 @@ describe Category do
   #   + c1
   #   + c2
   # r2
-  let(:r2){ Category.new( :name => "r2", :position => 2) }
+  let(:r2){ Category.new( :name => "r2", :position => 1) }
   let(:c1){ Category.new( :name => "c1") }
   let(:c2){ Category.new( :name => "c2") }
   let(:r1){ 
-    c = Category.new( :name => "r1", :position => 1)
+    c = Category.new( :name => "r1", :position => 0)
     c.children << c1
     c.children << c2
     c
@@ -18,7 +19,7 @@ describe Category do
   
   it "should have a name, a position and children" do
     r1.name.should == "r1"
-    r1.position.should == 1
+    r1.position.should == 0
     r1.children.should_not be_nil
   end
   
